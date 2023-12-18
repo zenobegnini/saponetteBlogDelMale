@@ -4,15 +4,20 @@
       <p-button (click)="getData()">login</p-button>
       <div *ngIf="response">
 
-        <div *ngFor="let mess of response; let i = index">
-          <h1>{{mess.title}}</h1>
-          <p>{{mess.content}}</p>
-        </div>
+          <div *ngFor="let mess of response; let i = index">
+        <ng-container *ngIf="selectedSubject && selectedSubject.id === mess.id">
+
+            <h1>{{mess.title}}</h1>
+            <p>{{mess.content}}</p>
+        </ng-container>
+
+          </div>
+
       </div>
 
       <input type="text" pInputText [(ngModel)]="newMessage" />
       <p-button icon="pi pi-check" (click)="invio()"></p-button>
-
+      <p-dropdown [options]="subjects" [(ngModel)]="selectedSubject" optionLabel="name" [showClear]="true" placeholder="Select a Category"></p-dropdown>
 
 
     </div>

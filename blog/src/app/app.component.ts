@@ -8,11 +8,17 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BlogServiceService } from './blog-service.service';
 import { InputTextModule } from 'primeng/inputtext'
 import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+
+interface Subject {
+  id: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ButtonModule, SidebarModule, InputTextModule, FormsModule],
+  imports: [CommonModule, RouterOutlet, ButtonModule, SidebarModule, InputTextModule, FormsModule, DropdownModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -22,6 +28,10 @@ export class AppComponent {
   response: any;
   newMessage: string = "";
   messageAL: string[] = [];
+
+  subjects: Subject[] | undefined;
+
+  selectedSubject: Subject | undefined;
 
   public sidebarVisible: boolean = false;
 
