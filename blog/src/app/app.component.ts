@@ -30,7 +30,7 @@ export class AppComponent {
   messageAL: string[] = [];
   subjects: any;
 
-  subjects: Subject[] | undefined;
+  // subjects: Subject[] | undefined;
 
   selectedSubject: Subject | undefined;
 
