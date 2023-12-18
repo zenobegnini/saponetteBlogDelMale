@@ -1,16 +1,20 @@
-<div class="sb-page-wrapper" >
+<div class="sb-page-wrapper">
   <div class="sb-page-container">
     <div class="sb-page-content">
-      <router-outlet>
-      </router-outlet>
-      <p-sidebar [(visible)]="sidebarVisible">
-        <h3>Sidebar</h3>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-    </p-sidebar>
-    <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>
+      <p-button (click)="getData()">login</p-button>
+      <div *ngIf="response">
+
+        <div *ngFor="let mess of response; let i = index">
+          <h1>{{mess.title}}</h1>
+          <p>{{mess.content}}</p>
+        </div>
+      </div>
+
+      <input type="text" pInputText [(ngModel)]="newMessage" />
+      <p-button icon="pi pi-check" (click)="invio()"></p-button>
+
+
+
     </div>
   </div>
 </div>

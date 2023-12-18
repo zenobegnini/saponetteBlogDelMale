@@ -5,16 +5,39 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
+import { BlogServiceService } from './blog-service.service';
+import { InputTextModule } from 'primeng/inputtext'
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ButtonModule, SidebarModule,],
+  imports: [CommonModule, RouterOutlet, ButtonModule, SidebarModule, InputTextModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'blog';
+  private blogService: BlogServiceService;
+  response: any;
+  newMessage: string = "";
+  messageAL: string[] = [];
 
   public sidebarVisible: boolean = false;
+
+  async getData() {
+    this.response = await this.blogService.getData();
+    console.log(this.response)
+  }
+
+  async invio() {
+    this.messageAL.push(this.newMessage);
+    await this.blogService.post(this.newMessage);
+    this.newMessage = "";
+    this.getData();
+  }
+
+  constructor(blogService: BlogServiceService) {
+    this.blogService = blogService;
+  }
 }
