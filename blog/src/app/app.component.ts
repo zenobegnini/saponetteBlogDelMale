@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
+import { MenubarModule } from 'primeng/menubar';
+import { BrowserAnimationModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-root',
   standalone: true,
