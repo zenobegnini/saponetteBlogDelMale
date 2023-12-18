@@ -22,12 +22,14 @@ export class AppComponent {
   response: any;
   newMessage: string = "";
   messageAL: string[] = [];
+  subjects: any;
 
   public sidebarVisible: boolean = false;
 
   async getData() {
     this.response = await this.blogService.getData();
     console.log(this.response)
+    this.getSubject()
   }
 
   async invio() {
@@ -35,6 +37,13 @@ export class AppComponent {
     await this.blogService.post(this.newMessage);
     this.newMessage = "";
     this.getData();
+    
+  }
+
+  async getSubject() {
+    this.subjects = await this.blogService.getSubject();
+    console.log(this.subjects)
+    
   }
 
   constructor(blogService: BlogServiceService) {

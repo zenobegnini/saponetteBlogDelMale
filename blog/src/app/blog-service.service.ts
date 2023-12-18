@@ -18,6 +18,12 @@ export class BlogServiceService {
     return res.data.items;
   }
 
+  public async getSubject(): Promise<any> {
+    let res = await axios.get("http://127.0.0.1:8090/api/collections/subjects/records/");
+    
+    return res.data.items;
+  }
+
 
   constructor() { }
 }
